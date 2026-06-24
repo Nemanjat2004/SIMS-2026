@@ -1,0 +1,20 @@
+[
+  {
+    "Sifra": "ZGR-001",
+    "AdresaUlicaIBroj": "Bulevar Evrope 15",
+    "Naselje": "Liman",
+    "LokacijaGradIDrzava": "Novi Sad, Srbija",
+    "BrojSpratova": 5,
+    "JmbgUpravnika": "2222222222222",
+    "Odobrena": true
+  },
+  {
+    "Sifra": "ZGR-002",
+    "AdresaUlicaIBroj": "Futoški put 42",
+    "Naselje": "Satelit",
+    "LokacijaGradIDrzava": "Novi Sad, Srbija",
+    "BrojSpratova": 8,
+    "JmbgUpravnika": "2222222222222",
+    "Odobrena": false
+  }
+]

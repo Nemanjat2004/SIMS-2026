@@ -1,0 +1,62 @@
+﻿<Page x:Class="SIMS___projekat.Views.DashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Glavni Meni" Background="#f8f9fa">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+        <StackPanel Margin="20">
+
+            <Border Background="White" Padding="20" CornerRadius="8" BorderBrush="#dee2e6" BorderThickness="1" Margin="0,0,0,20">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="10" ShadowDepth="1" Color="#cccccc" Opacity="0.3"/>
+                </Border.Effect>
+                <Grid>
+                    <TextBlock Name="txtDobrodoslica" FontSize="22" FontWeight="Bold" Foreground="#212529" HorizontalAlignment="Left"/>
+                    <Button Content="Odjavi se" Name="btnOdjava" Click="btnOdjava_Click" Padding="10,5" Background="#dc3545" Foreground="White" FontWeight="Bold" BorderThickness="0" Cursor="Hand" HorizontalAlignment="Right"/>
+                </Grid>
+            </Border>
+
+            <TextBlock Text="Zajedničke funkcionalnosti:" FontSize="18" FontWeight="SemiBold" Foreground="#495057" Margin="0,0,0,10"/>
+
+            <WrapPanel>
+                <Button Content="Prikaz svih zgrada" Name="btnPrikazZgrada" Click="btnPrikazZgrada_Click" Width="180" Height="50" Margin="0,0,15,15" Background="#0d6efd" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                <Button Content="Pretraga zgrada" Name="btnPretragaZgrada" Click="btnPretragaZgrada_Click" Width="180" Height="50" Margin="0,0,15,15" Background="#0d6efd" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+            </WrapPanel>
+
+            <StackPanel Name="panelSpecificneOpcije" Margin="0,20,0,0">
+
+                <StackPanel Name="panelAdmin" Visibility="Collapsed">
+                    <TextBlock Text="Administratorske opcije:" FontSize="18" FontWeight="SemiBold" Foreground="#495057" Margin="0,0,0,10"/>
+                    <WrapPanel>
+                        <Button Content="Dodaj novog upravnika" Name="btnDodajUpravnika" Click="btnDodajUpravnika_Click" Width="180" Height="50" Margin="0,0,15,15" Background="#198754" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                        <Button Content="Unesi novu zgradu" Name="btnDodajZgradu" Click="btnDodajZgradu_Click" Width="180" Height="50" Margin="0,0,15,15" Background="#198754" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                        <Button Content="Prikaži sve korisnike" Name="btnSviKorisnici" Click="btnSviKorisnici_Click" Width="180" Height="50" Margin="0,0,15,15" Background="#17a2b8" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                    </WrapPanel>
+                </StackPanel>
+
+                <StackPanel Name="panelUpravnik" Visibility="Collapsed" Margin="0,15,0,0">
+                    <TextBlock Text="Opcije za Upravnika:" FontSize="18" FontWeight="SemiBold" Foreground="#495057" Margin="0,0,0,10"/>
+                    <WrapPanel>
+                        <Button Content="Moje zgrade (Odobravanje)" Name="btnMojeZgrade" Click="btnMojeZgrade_Click" Width="200" Height="50" Margin="0,0,15,15" Background="#ffc107" Foreground="#212529" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                        <Button Content="Moji stanovi (Unos)" Name="btnMojiStanovi" Click="btnMojiStanovi_Click" Width="200" Height="50" Margin="0,0,15,15" Background="#ffc107" Foreground="#212529" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                        <Button Content="Zahtevi stanara (Odobravanje)" Name="btnZahteviStanara" Click="btnZahteviStanara_Click" Width="220" Height="50" Margin="0,0,15,15" Background="#ffc107" Foreground="#212529" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                    </WrapPanel>
+                </StackPanel>
+                <StackPanel Name="panelStanar" Visibility="Collapsed" Margin="0,15,0,0">
+                    <TextBlock Text="Opcije za Stanara:" FontSize="18" FontWeight="SemiBold" Foreground="#495057" Margin="0,0,0,10"/>
+                    <WrapPanel>
+                        <Button Content="Pošalji zahtev za stan" Name="btnPosaljiZahtev" Click="btnPosaljiZahtev_Click" Width="200" Height="50" Margin="0,0,15,15" Background="#17a2b8" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                        <Button Content="Moje komšije" Name="btnMojeKomsije" Click="btnMojeKomsije_Click" Width="200" Height="50" Margin="0,0,15,15" Background="#17a2b8" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                    </WrapPanel>
+                </StackPanel>
+
+
+            </StackPanel>
+
+        </StackPanel>
+        
+        
+    </ScrollViewer>
+    
+    
+</Page>

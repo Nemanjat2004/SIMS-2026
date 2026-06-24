@@ -1,0 +1,9 @@
+[
+  {
+    "Id": "zahtev-mock-001",
+    "JmbgStanara": "3333333333333",
+    "SifraZgrade": "ZGR-001",
+    "BrojStana": 1,
+    "Status": "Na cekanju"
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "BrojStana": 1,
+    "Opis": "Dvosoban stan, gleda na dvorište",
+    "BrojSoba": 2,
+    "MaxBrojStanara": 3,
+    "SifraZgrade": "ZGR-001"
+  },
+  {
+    "BrojStana": 2,
+    "Opis": "Garsonjera",
+    "BrojSoba": 1,
+    "MaxBrojStanara": 2,
+    "SifraZgrade": "ZGR-001"
+  },
+  {
+    "BrojStana": 15,
+    "Opis": "Penthaus sa velikom terasom",
+    "BrojSoba": 4,
+    "MaxBrojStanara": 5,
+    "SifraZgrade": "ZGR-002"
+  }
+]

@@ -1,0 +1,58 @@
+﻿<Page x:Class="SIMS___projekat.Views.AuthPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Prijava i Registracija" Background="#f8f9fa">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+
+        <Grid Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" Width="380">
+            <Border Background="White" Padding="30" CornerRadius="8" BorderBrush="#dee2e6" BorderThickness="1">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="15" ShadowDepth="2" Color="#cccccc" Opacity="0.4"/>
+                </Border.Effect>
+
+                <Grid>
+                    <StackPanel Name="panelPrijava" Visibility="Visible">
+                        <TextBlock Text="Prijava na sistem" FontSize="26" FontWeight="SemiBold" Foreground="#212529" HorizontalAlignment="Center" Margin="0,0,0,25"/>
+
+                        <TextBlock Text="Email adresa:" FontWeight="Medium" Foreground="#495057"/>
+                        <TextBox Name="txtEmailPrijava" Margin="0,5,0,15" Padding="8" FontSize="14" BorderBrush="#ced4da" BorderThickness="1"/>
+
+                        <TextBlock Text="Lozinka:" FontWeight="Medium" Foreground="#495057"/>
+                        <PasswordBox Name="txtLozinkaPrijava" Margin="0,5,0,25" Padding="8" FontSize="14" BorderBrush="#ced4da" BorderThickness="1"/>
+
+                        <Button Content="Prijavi se" Name="btnPrijava" Click="btnPrijava_Click" Padding="12" Background="#0d6efd" Foreground="White" FontSize="16" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+
+                        <Button Content="Nemate nalog? Registrujte se" Name="btnPrebaciNaRegistraciju" Click="btnPrebaciNaRegistraciju_Click" Margin="0,20,0,0" Padding="5" Background="Transparent" BorderThickness="0" Foreground="#0d6efd" Cursor="Hand" FontSize="14"/>
+                    </StackPanel>
+
+                    <StackPanel Name="panelRegistracija" Visibility="Collapsed">
+                        <TextBlock Text="Registracija Stanara" FontSize="26" FontWeight="SemiBold" Foreground="#212529" HorizontalAlignment="Center" Margin="0,0,0,25"/>
+
+                        <TextBlock Text="JMBG:" FontWeight="Medium" Foreground="#495057"/>
+                        <TextBox Name="txtJmbgReg" Margin="0,5,0,12" Padding="8" FontSize="14" BorderBrush="#ced4da" BorderThickness="1"/>
+
+                        <TextBlock Text="Ime:" FontWeight="Medium" Foreground="#495057"/>
+                        <TextBox Name="txtImeReg" Margin="0,5,0,12" Padding="8" FontSize="14" BorderBrush="#ced4da" BorderThickness="1"/>
+
+                        <TextBlock Text="Prezime:" FontWeight="Medium" Foreground="#495057"/>
+                        <TextBox Name="txtPrezimeReg" Margin="0,5,0,12" Padding="8" FontSize="14" BorderBrush="#ced4da" BorderThickness="1"/>
+
+                        <TextBlock Text="Mobilni telefon:" FontWeight="Medium" Foreground="#495057"/>
+                        <TextBox Name="txtTelefonReg" Margin="0,5,0,12" Padding="8" FontSize="14" BorderBrush="#ced4da" BorderThickness="1"/>
+
+                        <TextBlock Text="Email adresa:" FontWeight="Medium" Foreground="#495057"/>
+                        <TextBox Name="txtEmailReg" Margin="0,5,0,12" Padding="8" FontSize="14" BorderBrush="#ced4da" BorderThickness="1"/>
+
+                        <TextBlock Text="Lozinka:" FontWeight="Medium" Foreground="#495057"/>
+                        <PasswordBox Name="txtLozinkaReg" Margin="0,5,0,25" Padding="8" FontSize="14" BorderBrush="#ced4da" BorderThickness="1"/>
+
+                        <Button Content="Završi registraciju" Name="btnRegistruj" Click="btnRegistruj_Click" Padding="12" Background="#0d6efd" Foreground="White" FontSize="16" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+
+                        <Button Content="Već imate nalog? Prijavite se" Name="btnPrebaciNaPrijavu" Click="btnPrebaciNaPrijavu_Click" Margin="0,20,0,0" Padding="5" Background="Transparent" BorderThickness="0" Foreground="#0d6efd" Cursor="Hand" FontSize="14"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Page>

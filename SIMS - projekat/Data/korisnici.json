@@ -1,0 +1,29 @@
+[
+  {
+    "JMBG": "1111111111111",
+    "Email": "a",
+    "Lozinka": "1",
+    "Ime": "Glavni",
+    "Prezime": "Admin",
+    "MobilniTelefon": "0601111111",
+    "Tip": 0
+  },
+  {
+    "JMBG": "2222222222222",
+    "Email": "u",
+    "Lozinka": "2",
+    "Ime": "Pera",
+    "Prezime": "Upravnik",
+    "MobilniTelefon": "0602222222",
+    "Tip": 2
+  },
+  {
+    "JMBG": "3333333333333",
+    "Email": "s",
+    "Lozinka": "3",
+    "Ime": "Mika",
+    "Prezime": "Stanar",
+    "MobilniTelefon": "0603333333",
+    "Tip": 1
+  }
+]
