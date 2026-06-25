@@ -21,7 +21,7 @@
                     <ComboBoxItem Content="Adresa"/>
                     <ComboBoxItem Content="Naselje"/>
                     <ComboBoxItem Content="Broj spratova"/>
-                    <ComboBoxItem Content="Stanovima (Uskoro)"/>
+                    <ComboBoxItem Content="Broju stanova"/>
                 </ComboBox>
 
                 <TextBlock Text="Unesite upit:" VerticalAlignment="Center" FontWeight="Medium" Foreground="#495057" Margin="0,0,10,0"/>

@@ -12,6 +12,7 @@ namespace SIMS___projekat.Views
     public partial class PretragaZgradaPage : Page
     {
         private ZgradaService _zgradaService;
+        private StanService _stanService; // DODATO: Servis za stanove
         private Korisnik _ulogovaniKorisnik;
         private List<Zgrada> _sveDostupneZgrade;
 
@@ -19,9 +20,9 @@ namespace SIMS___projekat.Views
         {
             InitializeComponent();
             _zgradaService = new ZgradaService();
+            _stanService = new StanService(); // Inicijalizacija
             _ulogovaniKorisnik = ulogovaniKorisnik;
 
-            // Učitavamo bazu zgrada pri otvaranju (Admin vidi sve, ostali samo odobrene)
             if (_ulogovaniKorisnik.Tip == TipKorisnika.Administrator)
             {
                 _sveDostupneZgrade = _zgradaService.DobaviSveZgrade();
@@ -31,18 +32,16 @@ namespace SIMS___projekat.Views
                 _sveDostupneZgrade = _zgradaService.DobaviOdobreneZgrade();
             }
 
-            // Inicijalno prikazujemo sve
             dgRezultati.ItemsSource = _sveDostupneZgrade;
         }
 
         private void btnTrazi_Click(object sender, RoutedEventArgs e)
         {
-            string upit = txtUpit.Text.Trim().ToLower(); // Spuštamo na mala slova zbog specifikacije
+            string upit = txtUpit.Text.Trim().ToLower();
             int selektovaniKriterijum = cmbKriterijum.SelectedIndex;
 
             List<Zgrada> rezultati = new List<Zgrada>();
 
-            // Ako je polje prazno, prikazujemo sve zgrade
             if (string.IsNullOrWhiteSpace(upit))
             {
                 dgRezultati.ItemsSource = _sveDostupneZgrade;
@@ -71,12 +70,24 @@ namespace SIMS___projekat.Views
                     }
                     break;
 
-                case 3: // Stanovi
-                    MessageBox.Show("Pretraga po stanovima i logičkim operatorima će biti dostupna nakon unosa stanova od strane upravnika.", "Uskoro", MessageBoxButton.OK, MessageBoxImage.Information);
-                    return;
+                case 3: // DODATO: Pretraga po broju stanova
+                    if (int.TryParse(upit, out int trazeniBrojStanova))
+                    {
+                        var sviStanovi = _stanService.DobaviSveStanove();
+
+                        // Tražimo zgrade za koje je broj stanova (u bazi stanova) jednak unetom broju
+                        rezultati = _sveDostupneZgrade.Where(z =>
+                            sviStanovi.Count(s => s.SifraZgrade == z.Sifra) == trazeniBrojStanova
+                        ).ToList();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Za pretragu po broju stanova morate uneti broj!", "Greška", MessageBoxButton.OK, MessageBoxImage.Warning);
+                        return;
+                    }
+                    break;
             }
 
-            // Prikazujemo filtrirane rezultate
             dgRezultati.ItemsSource = rezultati;
 
             if (rezultati.Count == 0)
@@ -87,11 +98,8 @@ namespace SIMS___projekat.Views
 
         private void btnPonisti_Click(object sender, RoutedEventArgs e)
         {
-            // Resetujemo polja
             txtUpit.Text = string.Empty;
             cmbKriterijum.SelectedIndex = 0;
-
-            // Vraćamo tabelu na početno stanje (prikazuje sve dostupne zgrade)
             dgRezultati.ItemsSource = _sveDostupneZgrade;
         }
 
