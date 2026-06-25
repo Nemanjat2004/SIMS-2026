@@ -51,7 +51,7 @@ namespace SIMS___projekat.Services
             return sviZahtevi.Where(z => sveZgradeUpravnika.Any(b => b.Sifra == z.SifraZgrade)).ToList();
         }
 
-        public void PromeniStatusZahteva(string idZahteva, string noviStatus)
+        public void PromeniStatusZahteva(string idZahteva, string noviStatus, string razlog = "")
         {
             var sviZahtevi = _zahtevRepo.UcitajSve();
             var zahtev = sviZahtevi.FirstOrDefault(z => z.Id == idZahteva);
@@ -59,6 +59,12 @@ namespace SIMS___projekat.Services
             if (zahtev != null)
             {
                 zahtev.Status = noviStatus;
+
+                if (noviStatus == "Odbijen")
+                {
+                    zahtev.RazlogOdbijanja = razlog;
+                }
+
                 _zahtevRepo.SacuvajSve(sviZahtevi);
             }
         }
@@ -81,6 +87,24 @@ namespace SIMS___projekat.Services
                 .Select(z => z.JmbgStanara)
                 .Distinct()
                 .ToList();
+        }
+
+        public List<Zahtev> DobaviZahteveZaStanara(string jmbgStanara)
+        {
+            return _zahtevRepo.UcitajSve().Where(z => z.JmbgStanara == jmbgStanara).ToList();
+        }
+
+        // NOVA METODA: Brisanje (povlačenje) zahteva
+        public void ObrisiZahtev(string idZahteva)
+        {
+            var sviZahtevi = _zahtevRepo.UcitajSve();
+            var zahtev = sviZahtevi.FirstOrDefault(z => z.Id == idZahteva);
+
+            if (zahtev != null)
+            {
+                sviZahtevi.Remove(zahtev);
+                _zahtevRepo.SacuvajSve(sviZahtevi);
+            }
         }
     }
 }

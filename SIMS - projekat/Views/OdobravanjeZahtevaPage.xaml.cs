@@ -1,4 +1,6 @@
-﻿using System.Windows;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
 using SIMS___projekat.Models;
@@ -12,6 +14,9 @@ namespace SIMS___projekat.Views
         private ZgradaService _zgradaService;
         private Korisnik _ulogovaniUpravnik;
 
+        // NOVO: Ovde čuvamo sve zahteve kako bismo mogli da ih filtriramo
+        private List<Zahtev> _sviZahtevi;
+
         public OdobravanjeZahtevaPage(Korisnik ulogovaniKorisnik)
         {
             InitializeComponent();
@@ -24,9 +29,33 @@ namespace SIMS___projekat.Views
 
         private void OsveziTabelu()
         {
-            // Prikazujemo samo zahteve koji se tiču zgrada ovog upravnika
-            dgZahtevi.ItemsSource = _zahtevService.DobaviZahteveZaUpravnika(_ulogovaniUpravnik.JMBG, _zgradaService);
+            // Učitavamo sve zahteve iz baze, a zatim zovemo filter koji će popuniti tabelu
+            _sviZahtevi = _zahtevService.DobaviZahteveZaUpravnika(_ulogovaniUpravnik.JMBG, _zgradaService);
+            PrimeniFilter();
         }
+
+        // --- NOVA LOGIKA ZA FILTRIRANJE ---
+        private void PrimeniFilter()
+        {
+            if (cmbFilter == null || _sviZahtevi == null) return;
+
+            string izabraniFilter = (cmbFilter.SelectedItem as ComboBoxItem).Content.ToString();
+
+            if (izabraniFilter == "Svi zahtevi")
+            {
+                dgZahtevi.ItemsSource = _sviZahtevi;
+            }
+            else
+            {
+                dgZahtevi.ItemsSource = _sviZahtevi.Where(z => z.Status == izabraniFilter).ToList();
+            }
+        }
+
+        private void cmbFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            PrimeniFilter();
+        }
+        // ----------------------------------
 
         private void btnOdobri_Click(object sender, RoutedEventArgs e)
         {
@@ -53,7 +82,7 @@ namespace SIMS___projekat.Views
                 return;
             }
 
-            _zahtevService.PromeniStatusZahteva(odabraniZahtev.Id, "Odbijen");
+            _zahtevService.PromeniStatusZahteva(odabraniZahtev.Id, "Odbijen", "Netačni podaci");
             MessageBox.Show("Zahtev stanara je odbijen.", "Uspeh", MessageBoxButton.OK, MessageBoxImage.Information);
             OsveziTabelu();
         }

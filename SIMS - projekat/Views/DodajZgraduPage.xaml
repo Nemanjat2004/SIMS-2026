@@ -27,9 +27,9 @@
                     <TextBlock Text="Broj spratova:" FontWeight="Medium" Foreground="#495057"/>
                     <TextBox Name="txtBrojSpratova" Margin="0,5,0,12" Padding="8" FontSize="14" BorderBrush="#ced4da"/>
 
-                    <TextBlock Text="JMBG Upravnika (OBAVEZNO):" FontWeight="Medium" Foreground="#495057"/>
-                    <TextBox Name="txtJmbgUpravnika" Margin="0,5,0,25" Padding="8" FontSize="14" BorderBrush="#ced4da"/>
-
+                    <TextBlock Text="Izaberite Upravnika (OBAVEZNO):" FontWeight="Medium" Foreground="#495057"/>
+                    <ComboBox Name="cmbUpravnici" Margin="0,5,0,25" Padding="8" FontSize="14" BorderBrush="#ced4da" Cursor="Hand"/>
+                    
                     <Button Content="Završi unos zgrade" Name="btnUnesiZgradu" Click="btnUnesiZgradu_Click" Padding="12" Background="#198754" Foreground="White" FontSize="16" FontWeight="Bold" BorderThickness="0" Cursor="Hand" Margin="0,0,0,10"/>
                     <Button Content="Odustani i vrati se nazad" Name="btnNazad" Click="btnNazad_Click" Padding="10" Background="#6c757d" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
                 </StackPanel>

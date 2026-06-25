@@ -47,6 +47,7 @@
                     <WrapPanel>
                         <Button Content="Pošalji zahtev za stan" Name="btnPosaljiZahtev" Click="btnPosaljiZahtev_Click" Width="200" Height="50" Margin="0,0,15,15" Background="#17a2b8" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
                         <Button Content="Moje komšije" Name="btnMojeKomsije" Click="btnMojeKomsije_Click" Width="200" Height="50" Margin="0,0,15,15" Background="#17a2b8" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+                        <Button Content="Moji zahtevi" Name="btnMojiZahtevi" Click="btnMojiZahtevi_Click" Width="200" Height="50" Margin="0,0,15,15" Background="#17a2b8" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
                     </WrapPanel>
                 </StackPanel>
 

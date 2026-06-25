@@ -1,7 +1,7 @@
-﻿<Page x:Class="SIMS___projekat.Views.OdobravanjeZahtevaPage"
+﻿<Page x:Class="SIMS___projekat.Views.MojiZahteviPage"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="Odobravanje Zahteva" Background="#f8f9fa">
+      Title="Moji Zahtevi" Background="#f8f9fa">
 
     <Grid Margin="20">
         <Grid.RowDefinitions>
@@ -11,7 +11,7 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <TextBlock Text="Zahtevi stanara za pristup stanovima" FontSize="24" FontWeight="Bold" Foreground="#212529" Margin="0,0,0,20" Grid.Row="0"/>
+        <TextBlock Text="Istorija mojih zahteva" FontSize="24" FontWeight="Bold" Foreground="#212529" Margin="0,0,0,15" Grid.Row="0"/>
 
         <StackPanel Orientation="Horizontal" Grid.Row="1" Margin="0,0,0,15">
             <TextBlock Text="Filtriraj po statusu:" VerticalAlignment="Center" FontWeight="SemiBold" Foreground="#495057" Margin="0,0,10,0"/>
@@ -23,23 +23,20 @@
             </ComboBox>
         </StackPanel>
 
-        <DataGrid Name="dgZahtevi" Grid.Row="2" AutoGenerateColumns="False" IsReadOnly="True" 
+        <DataGrid Name="dgMojiZahtevi" Grid.Row="2" AutoGenerateColumns="False" IsReadOnly="True" 
                   Background="White" BorderBrush="#dee2e6" BorderThickness="1" 
                   RowHeight="40" FontSize="14" HeadersVisibility="Column"
                   ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="JMBG Stanara" Binding="{Binding JmbgStanara}" Width="150"/>
-                <DataGridTextColumn Header="Šifra zgrade" Binding="{Binding SifraZgrade}" Width="120"/>
-                <DataGridTextColumn Header="Broj stana" Binding="{Binding BrojStana}" Width="100"/>
-                <DataGridTextColumn Header="Trenutni Status" Binding="{Binding Status}" Width="130"/>
+                <DataGridTextColumn Header="Šifra zgrade" Binding="{Binding SifraZgrade}" Width="100"/>
+                <DataGridTextColumn Header="Broj stana" Binding="{Binding BrojStana}" Width="90"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100"/>
+                <DataGridTextColumn Header="Razlog odbijanja" Binding="{Binding RazlogOdbijanja}" Width="*"/>
 
-                <DataGridTemplateColumn Header="Akcije" Width="*">
+                <DataGridTemplateColumn Header="Akcije" Width="120">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                <Button Content="Odobri" Click="btnOdobri_Click" Width="80" Background="#198754" Foreground="White" BorderThickness="0" Cursor="Hand" Padding="5" Margin="0,0,10,0"/>
-                                <Button Content="Odbij" Click="btnOdbij_Click" Width="80" Background="#dc3545" Foreground="White" BorderThickness="0" Cursor="Hand" Padding="5"/>
-                            </StackPanel>
+                            <Button Content="Povuci zahtev" Click="btnPovuci_Click" Width="100" Background="#dc3545" Foreground="White" BorderThickness="0" Cursor="Hand" Padding="5"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

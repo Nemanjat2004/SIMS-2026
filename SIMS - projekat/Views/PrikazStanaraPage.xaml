@@ -1,0 +1,31 @@
+﻿<Page x:Class="SIMS___projekat.Views.PrikazStanaraPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Spisak Stanara" Background="#f8f9fa">
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Name="txtNaslov" Text="Spisak stanara za zgradu" FontSize="24" FontWeight="Bold" Foreground="#212529" Margin="0,0,0,20" Grid.Row="0"/>
+
+        <DataGrid Name="dgStanari" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True" 
+                  Background="White" BorderBrush="#dee2e6" BorderThickness="1" 
+                  RowHeight="40" FontSize="14" HeadersVisibility="Column"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled" HorizontalContentAlignment="Stretch">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Ime" Binding="{Binding Ime}" Width="*"/>
+                <DataGridTextColumn Header="Prezime" Binding="{Binding Prezime}" Width="*"/>
+                <DataGridTextColumn Header="Email adresa" Binding="{Binding Email}" Width="1.5*"/>
+                <DataGridTextColumn Header="Broj telefona" Binding="{Binding MobilniTelefon}" Width="1.2*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Nazad" Name="btnNazad" Click="btnNazad_Click" Grid.Row="2" 
+                Width="150" Height="45" Margin="0,20,0,0" HorizontalAlignment="Left"
+                Background="#6c757d" Foreground="White" FontSize="14" FontWeight="Bold" BorderThickness="0" Cursor="Hand"/>
+    </Grid>
+</Page>

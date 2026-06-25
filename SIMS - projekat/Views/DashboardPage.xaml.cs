@@ -43,6 +43,11 @@ namespace SIMS___projekat.Views
             NavigationService.Navigate(new SlanjeZahtevaPage(_ulogovaniKorisnik));
         }
 
+        private void btnMojiZahtevi_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new MojiZahteviPage(_ulogovaniKorisnik));
+        }
+
         private void btnMojeKomsije_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new PrikazKomsijaPage(_ulogovaniKorisnik));

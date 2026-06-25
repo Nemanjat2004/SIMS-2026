@@ -60,11 +60,11 @@ namespace SIMS___projekat.Views
 
         private void btnSpisakStanara_Click(object sender, RoutedEventArgs e)
         {
-            // Kako bismo izvukli tačnu zgradu na koju je korisnik kliknuo u tabeli:
+            // Nalazimo zgradu iz reda na koji je korisnik kliknuo
             Zgrada odabranaZgrada = (sender as Button).DataContext as Zgrada;
 
-            MessageBox.Show($"Kliknuli ste na zgradu {odabranaZgrada.AdresaUlicaIBroj}.\n\nOva funkcija će prikazati listu stanara čim implementiramo Zahteve u sistemu!",
-                            "Uskoro", MessageBoxButton.OK, MessageBoxImage.Information);
+            // Navigiramo na novu stranicu i prosleđujemo joj tu zgradu
+            NavigationService.Navigate(new PrikazStanaraPage(odabranaZgrada));
         }
 
         private void btnNazad_Click(object sender, RoutedEventArgs e)

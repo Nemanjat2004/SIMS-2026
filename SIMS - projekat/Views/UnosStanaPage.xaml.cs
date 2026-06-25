@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Navigation;
@@ -25,29 +26,33 @@ namespace SIMS___projekat.Views
 
         private void UcitajZgradeUpravnika()
         {
-            // Upravniku nudimo samo njegove zgrade da u njih unosi stanove
-            List<Zgrada> njegoveZgrade = _zgradaService.DobaviZgradeZaUpravnika(_ulogovaniUpravnik.JMBG);
-            cmbZgrade.ItemsSource = njegoveZgrade;
+            // Dobavljamo sve zgrade upravnika i odmah FILTRIRAMO samo one koje su odobrene
+            List<Zgrada> njegoveOdobreneZgrade = _zgradaService.DobaviZgradeZaUpravnika(_ulogovaniUpravnik.JMBG)
+                                                               .Where(z => z.Odobrena == true)
+                                                               .ToList();
 
-            if (njegoveZgrade.Count > 0)
+            cmbZgrade.ItemsSource = njegoveOdobreneZgrade;
+
+            if (njegoveOdobreneZgrade.Count > 0)
             {
                 cmbZgrade.SelectedIndex = 0; // Selektujemo prvu po defaultu
+                btnUnesi.IsEnabled = true;   // Palimo dugme
             }
             else
             {
-                MessageBox.Show("Trenutno nemate nijednu zgradu u sistemu. Prvo vam admin mora dodeliti zgradu.", "Informacija", MessageBoxButton.OK, MessageBoxImage.Information);
-                btnUnesi.IsEnabled = false; // Gasimo dugme ako nema zgrada
+                MessageBox.Show("Trenutno nemate nijednu odobrenu zgradu. Prvo morate prihvatiti neku zgradu da biste u nju dodavali stanove.", "Informacija", MessageBoxButton.OK, MessageBoxImage.Information);
+                btnUnesi.IsEnabled = false; // Gasimo dugme da ne bi mogao da klikne i unese u "prazno"
             }
         }
 
         private void btnUnesi_Click(object sender, RoutedEventArgs e)
         {
-            // 1. Provera da li su polja prazna
+            // 1. Provera da li su polja prazna i da li je ZGRADA IZABRANA
             if (cmbZgrade.SelectedValue == null || string.IsNullOrWhiteSpace(txtBrojStana.Text) ||
                 string.IsNullOrWhiteSpace(txtOpis.Text) || string.IsNullOrWhiteSpace(txtBrojSoba.Text) ||
                 string.IsNullOrWhiteSpace(txtMaxStanara.Text))
             {
-                MessageBox.Show("Sva polja su obavezna!", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Sva polja su obavezna i zgrada mora biti izabrana!", "Upozorenje", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
